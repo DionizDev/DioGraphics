@@ -8,7 +8,7 @@ package diographics;
 
 /**
  *
- * @author eduardo
+ * @author eduardo, fran
  */
 public class DioGraphics {
 
@@ -16,7 +16,8 @@ public class DioGraphics {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("hello work");
+        MainInterface VentanaPrincipal = new MainInterface("Ventana");
+        
     }
     
 }
