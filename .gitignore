@@ -12,6 +12,6 @@
 hs_err_pid*
 
 #Añadido para que no se cargen archivos del netbeans
-build/
-nbproject/
-build.xml/
+/build/*
+/nbproject/*
+build.xml
