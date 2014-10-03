@@ -24,8 +24,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public final class MainInterface extends JFrame implements ActionListener{
     
     //private JFrame ventana;
-    private UpToolBar menu;
+    private UpBar menu;
     private InfoBar infobar;
+    private LeftBar leftbar;
     private Desktop desktop;
     
     public MainInterface(String name){
@@ -36,8 +37,9 @@ public final class MainInterface extends JFrame implements ActionListener{
     public void createInterface(String name){
         
        // ventana = new JFrame(name);     // Frame principal
-        menu = new UpToolBar(this);         // Barra superior
+        menu = new UpBar(this);         // Barra superior
         infobar = new InfoBar();        // Menú derecho
+        leftbar = new LeftBar();        // Menú de herramientas izquierdo
         desktop = new Desktop();        // Escritorio
         
         // Propiedades
@@ -47,8 +49,9 @@ public final class MainInterface extends JFrame implements ActionListener{
         
         // Componentes
         this.getContentPane().add(menu.getPanel(), BorderLayout.PAGE_START);
-        this.getContentPane().add(desktop);
         this.getContentPane().add(infobar.getPanel(), BorderLayout.EAST);
+        this.getContentPane().add(leftbar.getPanel(), BorderLayout.WEST);
+        this.getContentPane().add(desktop);
         
         
         this.pack();
@@ -80,7 +83,7 @@ public final class MainInterface extends JFrame implements ActionListener{
                     Logger.getLogger(MainInterface.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                desktop.createFrame(file.getName(), imagen);
+                desktop.createFrame(file.getName(), imagen, infobar);
             }
        }
         

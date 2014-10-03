@@ -7,7 +7,6 @@ package diographics;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -18,8 +17,8 @@ import javax.swing.border.*;
  */
 public class InfoBar {
     
-    private JPanel panel, panel1, panel2;
-    private JButton boton;
+    private JPanel panel, panelTab1, panelTab2, panel2;
+    private JTabbedPane panelTab;
     private Border borde;
     private GridLayout layout;
     
@@ -37,7 +36,8 @@ public class InfoBar {
         this.setPanels();
         
         // Añadir los componentes al panel
-        panel.add(panel1, layout);
+        panel.add(panelTab, layout);
+        //panel.add(panel1, layout);
         panel.add(panel2, layout);
         
     }
@@ -55,20 +55,44 @@ public class InfoBar {
         
         BorderLayout layout2 = new BorderLayout();
         
-        panel1 = new JPanel();
+        panelTab = new JTabbedPane();
+        //panelTab.setLayout(layout2);
+        panelTab.setPreferredSize(new Dimension(40, 200));
+        panelTab.setLocation(10, 10);
+        
+        
+        panelTab1 = new JPanel();
+        panelTab1.setLayout(layout2);
+        panelTab1.setPreferredSize(new Dimension(40, 200));
+        panelTab1.setLocation(10, 10);
+        panelTab1.setBorder(titulo);
+        
+        panelTab2 = new JPanel();
+        panelTab2.setLayout(layout2);
+        panelTab2.setPreferredSize(new Dimension(40, 200));
+        panelTab2.setLocation(10, 10);
+        panelTab2.setBorder(titulo);
+        
         panel2 = new JPanel();
-        panel1.setLayout(layout2);
         panel2.setLayout(layout2);
-        panel1.setPreferredSize(new Dimension(40, 200));
         panel2.setPreferredSize(new Dimension(40, 60));
-        panel1.setLocation(10, 10);
-        panel1.setBorder(titulo);
+        panel2.setLocation(10, 10);
         panel2.setBorder(titulo2);
         
+        panelTab.addTab("Absoluto", panelTab1);
+        panelTab.addTab("Acumulativo", panelTab2);
        
     }
     
     public JPanel getPanel(){
         return panel;
+    }
+    
+    public JPanel getAbsolutHistogramPanel(){
+        return panelTab1;
+    }
+    
+    public JPanel getAcumHistogramPanel(){
+        return panelTab2;
     }
 }
